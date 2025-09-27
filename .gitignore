@@ -34,4 +34,4 @@ yarn-error.log*
 next-env.d.ts
 
 # railway
-railway.json
+# railway.json is tracked for deployment config
