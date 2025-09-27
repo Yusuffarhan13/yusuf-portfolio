@@ -42,16 +42,16 @@ export default function Contact() {
                 {profileData.contact.email}
               </motion.a>
 
-              {/* Website */}
+              {/* GitHub */}
               <motion.a
-                href={`https://${profileData.contact.website}`}
+                href="https://github.com/anexodos"
                 target="_blank"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="block text-xl text-xp-blue hover:text-xp-blue-light font-mono mb-6 opacity-100"
               >
-                <span className="mr-3">[www]</span>
-                {profileData.contact.website}
+                <span className="mr-3">[git]</span>
+                github.com/anexodos
               </motion.a>
 
               {/* Institution */}
@@ -77,13 +77,13 @@ export default function Contact() {
                   Send Email
                 </motion.a>
                 <motion.a
-                  href={`https://${profileData.contact.website}`}
+                  href="https://github.com/anexodos"
                   target="_blank"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-3 border-2 border-xp-blue-light text-xp-blue-light rounded-full font-semibold hover:bg-xp-blue-light/20 transition-all"
                 >
-                  Visit APOLA AI
+                  View GitHub
                 </motion.a>
               </div>
             </div>

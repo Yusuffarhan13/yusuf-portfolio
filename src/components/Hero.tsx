@@ -115,7 +115,7 @@ export default function Hero() {
             {[
               { label: 'IQ_LEVEL', value: 'INF', command: 'get --iq' },
               { label: 'AWARDS', value: '20+', command: 'list --awards' },
-              { label: 'IMPACT', value: '10K+', command: 'count --students' },
+              { label: 'PROJECTS', value: '50+', command: 'count --projects' },
               { label: 'TARGET', value: '90B', command: 'agi --params' },
             ].map((stat, i) => (
               <motion.div
@@ -152,14 +152,12 @@ export default function Hero() {
             >
               ./view_projects.sh
             </button>
-            <a
-              href="https://apolaai.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-6 py-3 bg-gradient-to-b from-xp-blue-light to-xp-blue text-white font-mono hover:from-xp-blue hover:to-xp-blue-dark transition-all shadow-md"
             >
-              ./launch_apola_ai.exe
-            </a>
+              ./contact_me.exe
+            </button>
           </motion.div>
         )}
 

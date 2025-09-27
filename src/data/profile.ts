@@ -98,13 +98,32 @@ export const profileData = {
   
   projects: [
     {
+      id: "omnix-ai",
+      name: "OmniX AI",
+      tagline: "Next-Gen Browser Intelligence",
+      description: "Revolutionary AI browser controller with advanced thinking mechanisms for autonomous web interaction",
+      website: "anexodos.ai.com",
+      status: "Active Development",
+      impact: "Redefining browser automation",
+      technologies: ["Playwright", "GPT-4", "Computer Vision", "Multi-Agent Systems", "WebAssembly"],
+      features: [
+        "Autonomous browser control",
+        "Visual understanding of web pages",
+        "Multi-step task planning",
+        "Self-correcting navigation",
+        "Context-aware decision making"
+      ],
+      innovation: "AI that browses like a human thinks",
+      color: "#9C27B0"
+    },
+    {
       id: "apola-ai",
       name: "APOLA AI",
       tagline: "The Paradigm Shifter",
       description: "AI-powered educational platform serving Sri Lankan students with multimodal learning capabilities",
       website: "apolaai.com",
       status: "Live",
-      impact: "10,000+ students",
+      impact: "Transforming education",
       technologies: ["LLaMA", "Whisper ASR", "DALL-E", "Flask", "PostgreSQL", "AWS"],
       features: [
         "Multimodal interaction (text, voice, visual)",
@@ -245,7 +264,7 @@ export const profileData = {
       "Complete 7B parameter LLM training",
       "Deploy production MoE architecture",
       "Launch Islamic AI assistant beta",
-      "Scale APOLA AI to 10,000+ students"
+      "Expand APOLA AI globally"
     ],
     medium_term: [
       "Achieve 30B parameter AGI prototype",
@@ -280,8 +299,7 @@ export const profileData = {
     age: 15,
     awards_count: 20,
     scholarship_value: 20000,
-    students_impacted: 10000,
     parameters_target: 90000000000,
-    projects_active: 6
+    projects_active: 7
   }
 }

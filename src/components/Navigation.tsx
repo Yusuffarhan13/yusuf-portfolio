@@ -78,15 +78,15 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* GitHub Link */}
           <motion.a
-            href="https://apolaai.com"
+            href="https://github.com/anexodos"
             target="_blank"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-6 py-2 bg-gradient-to-b from-xp-blue-light to-xp-blue text-white rounded font-semibold text-sm hover:from-xp-blue hover:to-xp-blue-dark transition-all shadow-md"
           >
-            APOLA AI
+            GitHub
           </motion.a>
         </div>
       </div>
