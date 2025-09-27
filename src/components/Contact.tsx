@@ -2,105 +2,159 @@
 
 import { motion } from 'framer-motion'
 import { profileData } from '@/data/profile'
+import TerminalWindow from './TerminalWindow'
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative py-20 px-4 bg-black">
-      <div className="max-w-4xl mx-auto">
+    <section id="contact" className="relative py-20 px-4 bg-dos-blue overflow-hidden">
+      {/* Matrix Rain Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="matrix-rain" />
+      </div>
+
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 gradient-text-xp">
-            Let's Build the Future
-          </h2>
-          
-          <p className="text-xl text-white mb-12 opacity-100">
-            Ready to collaborate on the next breakthrough in AI?
-          </p>
+          {/* Main Title Terminal */}
+          <TerminalWindow title="CONTACT.exe" className="mb-8">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold mb-4 text-dos-cyan">
+                Let's Build the Future
+              </h2>
+              <p className="text-dos-gray">Ready to collaborate on the next breakthrough in AI?</p>
+            </div>
+          </TerminalWindow>
 
-          {/* Contact card */}
+          {/* Contact Info Terminal */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
-            className="relative group"
+            className="mb-8"
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-xp-blue to-xp-blue-light rounded-2xl blur-lg opacity-25 group-hover:opacity-50 transition-opacity" />
-            
-            <div className="relative bg-black/90 backdrop-blur-xl rounded-2xl p-12 border border-xp-blue/30 hover:border-xp-blue-light transition-all hover:shadow-blue-glow">
-              {/* Email */}
-              <motion.a
-                href={`mailto:${profileData.contact.email}`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 text-2xl text-xp-blue-light hover:text-xp-blue font-mono mb-6 opacity-100"
-              >
-                <span>[@]</span>
-                {profileData.contact.email}
-              </motion.a>
+            <TerminalWindow title="contact_info.ini">
+              <div className="space-y-6">
+                {/* Command prompt */}
+                <div className="text-xs text-dos-gray">{`> cat contact_info.ini`}</div>
 
-              {/* GitHub */}
-              <motion.a
-                href="https://github.com/anexodos"
-                target="_blank"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="block text-xl text-xp-blue hover:text-xp-blue-light font-mono mb-6 opacity-100"
-              >
-                <span className="mr-3">[git]</span>
-                github.com/anexodos
-              </motion.a>
+                {/* Email */}
+                <div className="space-y-2">
+                  <div className="text-dos-cyan font-bold">[EMAIL]</div>
+                  <motion.a
+                    href={`mailto:${profileData.contact.email}`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex items-center gap-3 text-xl text-white hover:text-dos-yellow font-mono"
+                  >
+                    <span className="text-dos-cyan">@</span>
+                    {profileData.contact.email}
+                  </motion.a>
+                </div>
 
-              {/* Institution */}
-              <div className="text-gray-300 mb-8 opacity-100">
-                <span className="mr-3">[edu]</span>
-                {profileData.contact.institution}
+                {/* GitHub */}
+                <div className="space-y-2">
+                  <div className="text-dos-cyan font-bold">[GITHUB]</div>
+                  <motion.a
+                    href="https://github.com/anexodos"
+                    target="_blank"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex items-center gap-3 text-xl text-white hover:text-dos-yellow font-mono"
+                  >
+                    <span className="text-dos-cyan">$</span>
+                    github.com/anexodos
+                  </motion.a>
+                </div>
+
+                {/* Institution */}
+                <div className="space-y-2">
+                  <div className="text-dos-cyan font-bold">[INSTITUTION]</div>
+                  <div className="text-white font-mono">
+                    <span className="text-dos-cyan">></span> {profileData.contact.institution}
+                  </div>
+                </div>
+
+                {/* Research Focus */}
+                <div className="space-y-2 pt-4 border-t border-dos-gray/30">
+                  <div className="text-dos-cyan font-bold">[RESEARCH_INTERESTS]</div>
+                  <p className="text-dos-gray">{profileData.contact.focus}</p>
+                </div>
               </div>
-
-              {/* Focus areas */}
-              <div className="pt-8 border-t border-xp-blue/30">
-                <h3 className="text-lg font-semibold text-white mb-4 opacity-100">Research Interests</h3>
-                <p className="text-gray-300 opacity-100">{profileData.contact.focus}</p>
-              </div>
-
-              {/* CTA buttons */}
-              <div className="flex flex-wrap gap-4 justify-center mt-8">
-                <motion.a
-                  href={`mailto:${profileData.contact.email}`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3 bg-gradient-to-r from-xp-blue to-xp-blue-light text-white rounded-full font-semibold hover:shadow-blue-glow-lg transition-all"
-                >
-                  Send Email
-                </motion.a>
-                <motion.a
-                  href="https://github.com/anexodos"
-                  target="_blank"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3 border-2 border-xp-blue-light text-xp-blue-light rounded-full font-semibold hover:bg-xp-blue-light/20 transition-all"
-                >
-                  View GitHub
-                </motion.a>
-              </div>
-            </div>
+            </TerminalWindow>
           </motion.div>
 
-          {/* Final message */}
+          {/* CTA Buttons in Terminal */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <TerminalWindow title="actions.bat" showClose={false}>
+              <div className="space-y-4">
+                <div className="text-xs text-dos-gray mb-4">{`> list --available-actions`}</div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <motion.a
+                    href={`mailto:${profileData.contact.email}`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-6 py-3 bg-xp-blue text-white text-center font-semibold hover:bg-xp-blue-light transition-all"
+                  >
+                    [1] Send Email
+                  </motion.a>
+                  <motion.a
+                    href="https://github.com/anexodos"
+                    target="_blank"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-6 py-3 bg-xp-gray text-black text-center font-semibold hover:bg-xp-gray-dark hover:text-white transition-all"
+                  >
+                    [2] View GitHub
+                  </motion.a>
+                </div>
+                
+                <div className="text-xs text-dos-gray mt-4">
+                  {`> Select action [1-2]: _`}
+                </div>
+              </div>
+            </TerminalWindow>
+          </motion.div>
+
+          {/* Final Message Terminal */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
-            className="mt-12 text-center"
           >
-            <p className="text-2xl font-bold gradient-text-xp">
-              "At 15, I'm not just building AI systems—I'm building the future of intelligence itself."
-            </p>
-            <p className="mt-4 text-gray-400 opacity-100">— Yusuf Farhan</p>
+            <TerminalWindow title="message.txt" className="max-w-3xl mx-auto">
+              <div className="text-center space-y-4">
+                <div className="text-xs text-dos-gray mb-4">{`> type message.txt`}</div>
+                
+                <p className="text-xl font-bold text-dos-cyan">
+                  "At 15, I'm not just building AI systems—
+                </p>
+                <p className="text-xl font-bold text-dos-cyan">
+                  I'm building the future of intelligence itself."
+                </p>
+                
+                <p className="mt-4 text-dos-gray">— Yusuf Farhan</p>
+                
+                <div className="mt-6">
+                  <motion.div
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                    className="inline-block text-dos-yellow"
+                  >
+                    _
+                  </motion.div>
+                </div>
+              </div>
+            </TerminalWindow>
           </motion.div>
         </motion.div>
       </div>
