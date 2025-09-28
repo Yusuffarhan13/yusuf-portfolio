@@ -77,7 +77,7 @@ export default function Projects() {
                 <div className="space-y-2 mb-6">
                   {project.features.slice(0, 3).map((feature, i) => (
                     <div key={i} className="flex items-start gap-2">
-                      <span className="text-xp-blue mt-1">></span>
+                      <span className="text-xp-blue mt-1">{'>'}</span>
                       <span className="text-sm text-black">{feature}</span>
                     </div>
                   ))}
