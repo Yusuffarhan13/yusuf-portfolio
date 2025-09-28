@@ -101,7 +101,7 @@ export function HeroSection() {
         >
           <StatCard label="Awards Won" value={profileData.metrics.awards_count} />
           <StatCard label="Scholarship" value={`$${profileData.metrics.scholarship_value.toLocaleString()}`} />
-          <StatCard label="Students Impacted" value={`${profileData.metrics.students_impacted}+`} />
+          <StatCard label="Projects Active" value={profileData.metrics.projects_active} />
           <StatCard label="Parameters Target" value="90B" />
         </motion.div>
         
