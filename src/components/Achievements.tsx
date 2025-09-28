@@ -1,151 +1,164 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { profileData } from '@/data/profile'
 import TerminalWindow from './TerminalWindow'
+import dynamic from 'next/dynamic'
+import { useRef } from 'react'
+
+const NeuralGlobe = dynamic(() => import('./NeuralGlobe'), { 
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="text-dos-cyan animate-pulse">Loading Globe...</div>
+    </div>
+  )
+})
 
 export default function Achievements() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  })
+  
+  // Transform scroll progress to 0-1 for globe rotation
+  const globeProgress = useTransform(scrollYProgress, [0, 1], [0, 1])
+
   return (
-    <section id="achievements" className="relative py-20 px-4 overflow-hidden bg-dos-blue">
+    <section 
+      ref={containerRef}
+      id="achievements" 
+      className="relative bg-dos-blue"
+    >
       {/* Matrix Rain Background */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="matrix-rain" />
       </div>
       
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+      {/* Terminal Window */}
+      <div className="relative z-10">
+        <TerminalWindow 
+          title="GLOBAL_ACHIEVEMENTS.exe" 
+          className="min-h-screen"
         >
-          <TerminalWindow title="ACHIEVEMENTS.exe" className="max-w-3xl mx-auto">
-            <div className="text-center">
-              <h2 className="text-4xl font-bold mb-4 text-dos-cyan">
-                Award-Winning Excellence
-              </h2>
-              <p className="text-dos-gray">International recognition at just 15 years old</p>
-              
-              {/* Trophy ASCII Art */}
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.1, 1]
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="my-8"
+          <div className="flex flex-col lg:flex-row relative">
+            {/* Left side - Globe (Sticky on desktop) */}
+            <div className="hidden lg:block lg:w-1/2 lg:sticky lg:top-0 lg:h-screen">
+              <div className="h-full flex flex-col justify-center p-8">
+                {/* Title Header */}
+                <div className="text-center mb-8">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-2 text-dos-cyan">
+                    Award-Winning Excellence
+                  </h2>
+                  <p className="text-lg text-dos-gray">International recognition at just 15 years old</p>
+                </div>
+                
+                <motion.div 
+                  className="relative h-[500px]"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <NeuralGlobe scrollProgress={globeProgress} />
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Mobile view - Globe at top */}
+            <div className="lg:hidden w-full p-4">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold mb-2 text-dos-cyan">
+                  Award-Winning Excellence
+                </h2>
+                <p className="text-base text-dos-gray">International recognition at just 15 years old</p>
+              </div>
+              <motion.div 
+                className="relative h-[400px] mb-8"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
               >
-                <pre className="text-dos-yellow text-xs sm:text-sm inline-block">
-{`     ___________
-    '._==_==_=_.'
-    .-\\:      /-.
-   | (|:.     |) |
-    '-|:.     |-'
-      \\::.    /
-       '::. .'
-         ) (
-       _.' '._
-      '-------'`}
-                </pre>
+                <NeuralGlobe scrollProgress={globeProgress} />
               </motion.div>
             </div>
-          </TerminalWindow>
-        </motion.div>
 
-        {/* Achievement cards in terminal windows */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {profileData.achievements.map((achievement, index) => (
-            <motion.div
-              key={achievement.id}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <TerminalWindow 
-                title={`award_${achievement.id.substring(0, 8)}.dat`}
-                showClose={false}
-              >
-                <div className="space-y-3">
-                  {/* Command prompt style */}
-                  <div className="text-xs text-dos-gray">{`> display --award ${achievement.id}`}</div>
-                  
-                  {/* Icon and category */}
-                  <div className="flex justify-between items-start">
-                    <span className="text-xl text-dos-cyan">[{achievement.category.substring(0, 3).toUpperCase()}]</span>
-                    <div className="flex gap-1">
-                      {[...Array(Math.floor(achievement.importance / 2))].map((_, i) => (
-                        <span key={i} className="text-dos-yellow">★</span>
-                      ))}
+            {/* Right side - Scrollable Awards List */}
+            <div className="w-full lg:w-1/2 p-4 lg:p-8">
+                <div className="space-y-4">
+                    {/* Command prompt */}
+                    <div className="text-sm text-dos-gray mb-4">
+                      {`> dir /achievements/*.award`}
                     </div>
-                  </div>
+                
+                    {profileData.achievements.map((achievement, index) => (
+                      <motion.div
+                        key={achievement.id}
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ delay: index * 0.1 }}
+                        className="border border-dos-cyan/30 p-4 hover:border-dos-cyan transition-all hover:bg-dos-cyan/5"
+                      >
+                        {/* Award Header */}
+                        <div className="flex justify-between items-start mb-2">
+                          <span className="text-sm text-dos-cyan font-mono">
+                            [{achievement.category.substring(0, 3).toUpperCase()}]
+                          </span>
+                          <div className="flex gap-1">
+                            {[...Array(Math.floor(achievement.importance / 2))].map((_, i) => (
+                              <span key={i} className="text-dos-yellow text-xs">★</span>
+                            ))}
+                          </div>
+                        </div>
 
-                  {/* Title */}
-                  <h3 className="text-lg font-bold text-white">
-                    {achievement.title}
-                  </h3>
+                        {/* Award Title */}
+                        <h3 className="text-lg font-bold text-white mb-2">
+                          {achievement.title}
+                        </h3>
 
-                  {/* Category badge */}
-                  <div className="inline-block px-2 py-1 bg-xp-gray/20 border border-dos-cyan/50 text-xs">
-                    {achievement.category}
-                  </div>
+                        {/* Award Details */}
+                        {achievement.description && (
+                          <p className="text-dos-gray text-sm mb-2">
+                            {achievement.description}
+                          </p>
+                        )}
 
-                  {/* Description */}
-                  {achievement.description && (
-                    <p className="text-dos-gray text-sm">{achievement.description}</p>
-                  )}
+                        {/* Award Meta */}
+                        <div className="flex justify-between items-center text-xs text-dos-gray/70">
+                          <span>{achievement.date}</span>
+                          {achievement.location && (
+                            <span className="flex items-center gap-1">
+                              <span className="text-dos-cyan">@</span>
+                              {achievement.location}
+                            </span>
+                          )}
+                        </div>
 
-                  {/* Meta info */}
-                  <div className="flex justify-between items-center text-xs text-dos-gray pt-2 border-t border-dos-gray/20">
-                    <span>{achievement.date}</span>
-                    {achievement.location && (
-                      <span className="flex items-center gap-1">
-                        <span>📍</span>
-                        {achievement.location}
-                      </span>
-                    )}
-                  </div>
+                        {/* Loading bar animation */}
+                        <motion.div 
+                          className="mt-2 h-[2px] bg-dos-cyan/20"
+                          initial={{ scaleX: 0 }}
+                          whileInView={{ scaleX: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                          style={{ transformOrigin: "left" }}
+                        >
+                          <div className="h-full bg-dos-cyan" />
+                        </motion.div>
+                      </motion.div>
+                    ))}
+                
+                    {/* End of list */}
+                    <div className="text-center py-4 text-dos-gray text-sm">
+                      -- END OF ACHIEVEMENTS --
+                    </div>
                 </div>
-              </TerminalWindow>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Summary stats terminal */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16"
-        >
-          <TerminalWindow title="achievement_stats.log" className="max-w-2xl mx-auto">
-            <div>
-              <div className="text-xs text-dos-gray mb-4">{`> calculate --stats achievements/*`}</div>
-              <div className="grid grid-cols-3 gap-8 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-dos-cyan">{profileData.achievements.length}</div>
-                  <div className="text-sm text-dos-gray mt-1">Total Awards</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-dos-yellow">$20,000</div>
-                  <div className="text-sm text-dos-gray mt-1">Scholarship</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-dos-cyan">GLOBAL</div>
-                  <div className="text-sm text-dos-gray mt-1">Recognition</div>
-                </div>
-              </div>
-              <div className="mt-6 text-center">
-                <div className="text-xs text-dos-gray">
-                  {`> Achievement level: EXTRAORDINARY`}
-                </div>
-              </div>
             </div>
-          </TerminalWindow>
-        </motion.div>
+          </div>
+        </TerminalWindow>
       </div>
     </section>
   )

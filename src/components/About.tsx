@@ -42,7 +42,7 @@ export default function About() {
                     className="font-mono text-sm"
                   >
                     <div className="text-dos-yellow">
-                      <span className="text-dos-gray">C:\></span> {cmd.cmd}
+                      <span className="text-dos-gray">C:\{'>'}</span> {cmd.cmd}
                     </div>
                     <div className="text-white ml-4">
                       {cmd.output}
@@ -98,10 +98,10 @@ export default function About() {
               <div className="font-mono text-xs space-y-1">
                 <div className="text-dos-yellow">{`{`}</div>
                 <div className="ml-4">
-                  <span className="text-dos-cyan">"intelligence"</span>: <span className="text-white">"Architecture > Scale"</span>,
+                  <span className="text-dos-cyan">"intelligence"</span>: <span className="text-white">"Architecture {'>'} Scale"</span>,
                 </div>
                 <div className="ml-4">
-                  <span className="text-dos-cyan">"learning"</span>: <span className="text-white">"Experience > Exposure"</span>,
+                  <span className="text-dos-cyan">"learning"</span>: <span className="text-white">"Experience {'>'} Exposure"</span>,
                 </div>
                 <div className="ml-4">
                   <span className="text-dos-cyan">"true_ai"</span>: <span className="text-white">"Cultural Intelligence"</span>,
