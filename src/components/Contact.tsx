@@ -73,7 +73,7 @@ export default function Contact() {
                 <div className="space-y-2">
                   <div className="text-dos-cyan font-bold">[INSTITUTION]</div>
                   <div className="text-white font-mono">
-                    <span className="text-dos-cyan">></span> {profileData.contact.institution}
+                    <span className="text-dos-cyan">{'>'}</span> {profileData.contact.institution}
                   </div>
                 </div>
 
