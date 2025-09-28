@@ -48,10 +48,10 @@ export default function Achievements() {
               <div className="h-full flex flex-col justify-center p-8">
                 {/* Title Header */}
                 <div className="text-center mb-8">
-                  <h2 className="text-4xl md:text-5xl font-bold mb-2 text-dos-cyan">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 text-dos-cyan">
                     Award-Winning Excellence
                   </h2>
-                  <p className="text-lg text-dos-gray">International recognition at just 15 years old</p>
+                  <p className="text-sm sm:text-base lg:text-lg text-dos-gray">International recognition at just 15 years old</p>
                 </div>
                 
                 <motion.div 
@@ -69,13 +69,13 @@ export default function Achievements() {
             {/* Mobile view - Globe at top */}
             <div className="lg:hidden w-full p-4">
               <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold mb-2 text-dos-cyan">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-dos-cyan">
                   Award-Winning Excellence
                 </h2>
-                <p className="text-base text-dos-gray">International recognition at just 15 years old</p>
+                <p className="text-sm sm:text-base text-dos-gray">International recognition at just 15 years old</p>
               </div>
               <motion.div 
-                className="relative h-[400px] mb-8"
+                className="relative h-[300px] sm:h-[350px] md:h-[400px] mb-8"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}

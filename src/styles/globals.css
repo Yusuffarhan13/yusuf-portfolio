@@ -12,6 +12,9 @@
   html {
     @apply scroll-smooth;
     cursor: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
   
   body {
@@ -20,6 +23,8 @@
     overflow-x: hidden;
     background: #008080; /* Classic teal DOS background */
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   /* CRT Screen Effect - more subtle for XP era */
@@ -38,9 +43,11 @@
     opacity: 0.2;
   }
   
-  /* Terminal cursor */
-  * {
-    cursor: none !important;
+  /* Terminal cursor - disabled on touch devices */
+  @media (hover: hover) and (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
   }
   
   /* DOS-style text selection */

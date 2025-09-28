@@ -8,7 +8,7 @@ export default function Projects() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section id="projects" className="relative py-20 px-4 bg-dos-blue">
+    <section id="projects" className="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-dos-blue">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,13 +16,13 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4 text-dos-yellow">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-dos-yellow">
             Revolutionary Projects
           </h2>
-          <p className="text-xl text-white opacity-100">Building the future of AI, one breakthrough at a time</p>
+          <p className="text-base sm:text-lg md:text-xl text-white opacity-100 px-4 sm:px-0">Building the future of AI, one breakthrough at a time</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {profileData.projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -42,7 +42,7 @@ export default function Projects() {
               <div className="absolute -inset-1 bg-gradient-to-r from-xp-blue to-xp-blue-light rounded-2xl blur-lg opacity-25 group-hover:opacity-75 transition-opacity" />
               
               {/* Card */}
-              <div className="relative h-full bg-xp-silver backdrop-blur-xl rounded-lg p-8 border-2 border-xp-gray-dark hover:border-xp-blue transition-all shadow-lg">
+              <div className="relative h-full bg-xp-silver backdrop-blur-xl rounded-lg p-6 sm:p-8 border-2 border-xp-gray-dark hover:border-xp-blue transition-all shadow-lg">
                 {/* Status badge */}
                 <div className="absolute top-4 right-4">
                   <span className={`px-3 py-1 text-xs rounded font-semibold ${
@@ -60,9 +60,9 @@ export default function Projects() {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold mb-2 text-black">{project.name}</h3>
-                <p className="text-xp-blue font-semibold mb-4">{project.tagline}</p>
-                <p className="text-gray-700 mb-6">{project.description}</p>
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 text-black">{project.name}</h3>
+                <p className="text-sm sm:text-base text-xp-blue font-semibold mb-4">{project.tagline}</p>
+                <p className="text-sm sm:text-base text-gray-700 mb-6">{project.description}</p>
 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2 mb-6">

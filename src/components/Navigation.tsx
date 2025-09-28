@@ -2,10 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import { Menu, X } from 'lucide-react'
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,20 +52,20 @@ export default function Navigation() {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold text-xp-blue font-mono"
+            className="text-xl md:text-2xl font-bold text-xp-blue font-mono"
           >
             ~/yusuf
           </motion.div>
 
-          {/* Nav items */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Nav items */}
+          <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {navItems.map((item) => (
               <motion.a
                 key={item.id}
                 href={item.href}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className={`relative font-medium transition-colors ${
+                className={`relative font-medium transition-colors text-sm lg:text-base ${
                   activeSection === item.id ? 'text-xp-blue font-bold' : 'text-black hover:text-xp-blue'
                 }`}
               >
@@ -78,17 +80,58 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* GitHub Link */}
+          {/* Desktop GitHub Link */}
           <motion.a
             href="https://github.com/anexodos"
             target="_blank"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-2 bg-gradient-to-b from-xp-blue-light to-xp-blue text-white rounded font-semibold text-sm hover:from-xp-blue hover:to-xp-blue-dark transition-all shadow-md"
+            className="hidden md:block px-4 lg:px-6 py-2 bg-gradient-to-b from-xp-blue-light to-xp-blue text-white rounded font-semibold text-sm hover:from-xp-blue hover:to-xp-blue-dark transition-all shadow-md"
           >
             GitHub
           </motion.a>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-xp-blue hover:bg-xp-gray-light rounded transition-colors"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        <motion.div
+          initial={false}
+          animate={{ height: mobileMenuOpen ? 'auto' : 0 }}
+          className="md:hidden overflow-hidden"
+        >
+          <div className="py-4 space-y-3">
+            {navItems.map((item) => (
+              <motion.a
+                key={item.id}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                whileTap={{ scale: 0.95 }}
+                className={`block py-2 px-4 rounded transition-colors ${
+                  activeSection === item.id
+                    ? 'bg-xp-blue text-white font-bold'
+                    : 'text-black hover:bg-xp-gray-light'
+                }`}
+              >
+                {item.name}
+              </motion.a>
+            ))}
+            <motion.a
+              href="https://github.com/anexodos"
+              target="_blank"
+              whileTap={{ scale: 0.95 }}
+              className="block py-2 px-4 bg-gradient-to-b from-xp-blue-light to-xp-blue text-white rounded font-semibold text-center hover:from-xp-blue hover:to-xp-blue-dark transition-all"
+            >
+              GitHub
+            </motion.a>
+          </div>
+        </motion.div>
       </div>
     </motion.nav>
   )

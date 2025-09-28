@@ -6,7 +6,7 @@ import TerminalWindow from './TerminalWindow'
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative py-20 px-4 bg-dos-blue overflow-hidden">
+    <section id="contact" className="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-dos-blue overflow-hidden">
       {/* Matrix Rain Background */}
       <div className="absolute inset-0 opacity-10">
         <div className="matrix-rain" />
@@ -21,10 +21,10 @@ export default function Contact() {
           {/* Main Title Terminal */}
           <TerminalWindow title="CONTACT.exe" className="mb-8">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-4 text-dos-cyan">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-dos-cyan">
                 Let's Build the Future
               </h2>
-              <p className="text-dos-gray">Ready to collaborate on the next breakthrough in AI?</p>
+              <p className="text-sm sm:text-base text-dos-gray px-2 sm:px-0">Ready to collaborate on the next breakthrough in AI?</p>
             </div>
           </TerminalWindow>
 
@@ -47,7 +47,7 @@ export default function Contact() {
                     href={`mailto:${profileData.contact.email}`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-3 text-xl text-white hover:text-dos-yellow font-mono"
+                    className="inline-flex items-center gap-3 text-base sm:text-lg md:text-xl text-white hover:text-dos-yellow font-mono break-all"
                   >
                     <span className="text-dos-cyan">@</span>
                     {profileData.contact.email}
@@ -62,7 +62,7 @@ export default function Contact() {
                     target="_blank"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-3 text-xl text-white hover:text-dos-yellow font-mono"
+                    className="inline-flex items-center gap-3 text-base sm:text-lg md:text-xl text-white hover:text-dos-yellow font-mono break-all"
                   >
                     <span className="text-dos-cyan">$</span>
                     github.com/anexodos
@@ -97,7 +97,7 @@ export default function Contact() {
               <div className="space-y-4">
                 <div className="text-xs text-dos-gray mb-4">{`> list --available-actions`}</div>
                 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <motion.a
                     href={`mailto:${profileData.contact.email}`}
                     whileHover={{ scale: 1.05 }}

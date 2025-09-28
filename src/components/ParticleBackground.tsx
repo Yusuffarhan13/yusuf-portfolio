@@ -30,7 +30,7 @@ export default function ParticleBackground() {
       color: string
     }> = []
 
-    const particleCount = 100
+    const particleCount = window.innerWidth <= 768 ? 50 : 100
     const colors = ['#00ff41', '#39ff14', '#0fff50', '#32cd32']
 
     // Initialize particles
@@ -45,12 +45,15 @@ export default function ParticleBackground() {
       })
     }
 
-    // Mouse position
+    // Mouse position (disabled on mobile for performance)
     let mouseX = 0
     let mouseY = 0
+    const isMobile = window.innerWidth <= 768
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX
-      mouseY = e.clientY
+      if (!isMobile) {
+        mouseX = e.clientX
+        mouseY = e.clientY
+      }
     }
     window.addEventListener('mousemove', handleMouseMove)
 

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: 'Portfolio of Yusuf Farhan - 15-year-old AI researcher building the future of intelligence. Creator of APOLA AI, AGI researcher, and international award winner.',
   keywords: 'Yusuf Farhan, AI, AGI, Artificial Intelligence, APOLA AI, Sri Lanka, Machine Learning, Neural Networks',
   authors: [{ name: 'Yusuf Farhan', url: 'https://apolaai.com' }],
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
   openGraph: {
     title: 'Yusuf Farhan | AI Architect',
     description: 'Building the future of intelligence at age 15',

@@ -33,7 +33,7 @@ export default function Skills() {
   ]
 
   return (
-    <section id="skills" className="relative py-20 px-4 bg-dos-blue overflow-hidden">
+    <section id="skills" className="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-dos-blue overflow-hidden">
       {/* Matrix Rain Background */}
       <div className="absolute inset-0 opacity-10">
         <div className="matrix-rain" />
@@ -48,15 +48,15 @@ export default function Skills() {
         >
           <TerminalWindow title="TECHNICAL_ARSENAL.exe" className="max-w-3xl mx-auto mb-8">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-4 text-dos-cyan">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-dos-cyan">
                 Technical Arsenal
               </h2>
-              <p className="text-dos-gray">Mastery across the entire AI/ML stack</p>
+              <p className="text-sm sm:text-base text-dos-gray">Mastery across the entire AI/ML stack</p>
             </div>
           </TerminalWindow>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {skills.map((skillGroup, index) => (
             <motion.div
               key={skillGroup.category}
@@ -71,7 +71,7 @@ export default function Skills() {
                   <div className="text-xs text-dos-gray mb-2">{`> ${skillGroup.command}`}</div>
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-2xl text-dos-cyan">{skillGroup.icon}</span>
-                    <h3 className="text-xl font-bold text-white">{skillGroup.category}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-white">{skillGroup.category}</h3>
                   </div>
                 </div>
 

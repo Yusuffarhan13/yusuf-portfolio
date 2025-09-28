@@ -14,6 +14,7 @@
     "@types/three": "^0.180.0",
     "framer-motion": "^10.16.5",
     "glsl": "^0.0.1",
+    "lucide-react": "^0.544.0",
     "next": "14.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

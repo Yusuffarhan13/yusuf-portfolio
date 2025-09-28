@@ -45,7 +45,7 @@ export function HeroSection() {
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
         {/* Glitch effect on name */}
         <motion.h1
-          className="text-6xl md:text-8xl font-bold mb-4 relative"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 relative"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
@@ -71,10 +71,10 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 0.7 }}
           className="mb-6"
         >
-          <p className="text-2xl md:text-3xl text-cyan-400 font-mono mb-2">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-400 font-mono mb-2">
             Age {profileData.age} • {profileData.location}
           </p>
-          <p className="text-xl text-purple-400">
+          <p className="text-base sm:text-lg md:text-xl text-purple-400">
             {profileData.subtitle}
           </p>
         </motion.div>
@@ -86,7 +86,7 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 1 }}
           className="mb-8"
         >
-          <p className="text-2xl md:text-4xl font-mono text-white">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-mono text-white">
             {typedText}
             <span className="animate-pulse">|</span>
           </p>
@@ -97,7 +97,7 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 mb-8 px-2 sm:px-4"
         >
           <StatCard label="Awards Won" value={profileData.metrics.awards_count} />
           <StatCard label="Scholarship" value={`$${profileData.metrics.scholarship_value.toLocaleString()}`} />
@@ -117,7 +117,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="text-lg md:text-xl italic text-gray-300"
+            className="text-sm sm:text-base md:text-lg lg:text-xl italic text-gray-300 px-4"
           >
             "{profileData.quotes[currentQuoteIndex]}"
           </motion.p>
@@ -128,14 +128,14 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.7 }}
-          className="flex flex-wrap gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"
         >
           <button
             onClick={() => {
               updateConsciousness(0.1)
               document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
             }}
-            className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-mono text-white hover:scale-105 transition-transform duration-200 shadow-[0_0_20px_rgba(0,255,255,0.5)]"
+            className="px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-mono text-sm sm:text-base text-white hover:scale-105 transition-transform duration-200 shadow-[0_0_20px_rgba(0,255,255,0.5)]"
           >
             Explore Projects
           </button>
@@ -143,7 +143,7 @@ export function HeroSection() {
             href="https://apolaai.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 border-2 border-purple-500 rounded-full font-mono text-purple-400 hover:bg-purple-500/20 hover:scale-105 transition-all duration-200"
+            className="px-6 sm:px-8 py-2.5 sm:py-3 border-2 border-purple-500 rounded-full font-mono text-sm sm:text-base text-purple-400 hover:bg-purple-500/20 hover:scale-105 transition-all duration-200"
           >
             Visit APOLA AI
           </a>

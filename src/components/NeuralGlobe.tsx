@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
@@ -135,11 +135,30 @@ function Globe({ scrollProgress }: { scrollProgress: MotionValue<number> }) {
 }
 
 export default function NeuralGlobe({ scrollProgress }: { scrollProgress: MotionValue<number> }) {
+  const [isMobile, setIsMobile] = useState(false)
+  const [devicePixelRatio, setDevicePixelRatio] = useState(1)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+      setDevicePixelRatio(Math.min(window.devicePixelRatio, 2))
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full touch-none">
       <Canvas
-        camera={{ position: [0, 0, 5], fov: 50 }}
+        camera={{ position: [0, 0, isMobile ? 6 : 5], fov: isMobile ? 60 : 50 }}
         style={{ background: 'transparent' }}
+        dpr={devicePixelRatio}
+        gl={{ 
+          antialias: !isMobile,
+          alpha: true,
+          powerPreference: 'high-performance'
+        }}
       >
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={0.5} color="#00aaaa" />
@@ -151,7 +170,11 @@ export default function NeuralGlobe({ scrollProgress }: { scrollProgress: Motion
           enableZoom={false} 
           enablePan={false}
           autoRotate
-          autoRotateSpeed={0.5}
+          autoRotateSpeed={isMobile ? 0.3 : 0.5}
+          touches={{
+            ONE: THREE.TOUCH.ROTATE,
+            TWO: THREE.TOUCH.DOLLY_ROTATE
+          }}
         />
       </Canvas>
     </div>
