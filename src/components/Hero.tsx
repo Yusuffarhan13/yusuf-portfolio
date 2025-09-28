@@ -80,7 +80,7 @@ export default function Hero() {
                 transition={{ delay: 0.5 }}
                 className="text-center text-xl md:text-2xl font-bold"
               >
-                <span className="text-dos-gray">C:\USERS\YUSUF> </span>
+                <span className="text-dos-gray">C:\USERS\YUSUF{'>'} </span>
                 <TypingEffect
                   text="Building AGI at 15 years old"
                   speed={80}
