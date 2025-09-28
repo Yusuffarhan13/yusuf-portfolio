@@ -80,15 +80,15 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Desktop GitHub Link */}
+          {/* Desktop LinkedIn Link */}
           <motion.a
-            href="https://github.com/anexodos"
+            href="https://www.linkedin.com/in/yusuffarhan"
             target="_blank"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="hidden md:block px-4 lg:px-6 py-2 bg-gradient-to-b from-xp-blue-light to-xp-blue text-white rounded font-semibold text-sm hover:from-xp-blue hover:to-xp-blue-dark transition-all shadow-md"
           >
-            GitHub
+            LinkedIn
           </motion.a>
 
           {/* Mobile Menu Toggle */}
@@ -123,12 +123,12 @@ export default function Navigation() {
               </motion.a>
             ))}
             <motion.a
-              href="https://github.com/anexodos"
+              href="https://www.linkedin.com/in/yusuffarhan"
               target="_blank"
               whileTap={{ scale: 0.95 }}
               className="block py-2 px-4 bg-gradient-to-b from-xp-blue-light to-xp-blue text-white rounded font-semibold text-center hover:from-xp-blue hover:to-xp-blue-dark transition-all"
             >
-              GitHub
+              LinkedIn
             </motion.a>
           </div>
         </motion.div>

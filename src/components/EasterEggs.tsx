@@ -113,9 +113,8 @@ export function EasterEggs() {
           '  [1] APOLA AI - Live Educational Platform',
           '  [2] 90B Parameter AGI Research',
           '  [3] 7B LLM from Scratch',
-          '  [4] Islamic AI Assistant',
-          '  [5] Universal AI Agent',
-          '  [6] Mixture-of-Experts Implementation',
+          '  [4] Universal AI Agent',
+          '  [5] Mixture-of-Experts Implementation',
           '>'
         ])
       },

@@ -24,9 +24,10 @@ export const profileData = {
     {
       id: "scholarship",
       title: "$20,000 Havered Square Scholarship",
-      category: "Financial",
+      category: "Special Award",
+      event: "ICIA 2025",
       date: "2025",
-      description: "Merit-based recognition",
+      description: "Special award given at ICIA 2025",
       importance: 9,
       color: "#00FF00",
       icon: "💰"
@@ -167,22 +168,6 @@ export const profileData = {
       color: "#00FF00"
     },
     {
-      id: "islamic-ai",
-      name: "Islamic AI Assistant",
-      tagline: "Cultural Intelligence",
-      description: "World's first hadith-integrated AI system with authentic religious reasoning",
-      status: "Beta Development",
-      technologies: ["Neo4j", "Arabic NLP", "Knowledge Graphs", "Theological Validation"],
-      features: [
-        "Hadith relationship mapping",
-        "Multilingual processing",
-        "Theological verification",
-        "Cultural context awareness"
-      ],
-      impact: "Preserving religious knowledge through AI",
-      color: "#4CAF50"
-    },
-    {
       id: "universal-agent",
       name: "Universal AI Agent",
       tagline: "MCP-Powered Automation",
@@ -263,7 +248,6 @@ export const profileData = {
     short_term: [
       "Complete 7B parameter LLM training",
       "Deploy production MoE architecture",
-      "Launch Islamic AI assistant beta",
       "Expand APOLA AI globally"
     ],
     medium_term: [
@@ -289,7 +273,9 @@ export const profileData = {
   ],
   
   contact: {
-    email: "support@apolaai.com",
+    email: "yusuffarhan@apolaai.com",
+    phone: "+94777415395",
+    linkedin: "https://www.linkedin.com/in/yusuffarhan",
     website: "apolaai.com",
     institution: "Zahira College Colombo, Sri Lanka",
     focus: "AGI, Educational AI, Cultural Intelligence Systems"

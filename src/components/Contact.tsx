@@ -54,18 +54,32 @@ export default function Contact() {
                   </motion.a>
                 </div>
 
-                {/* GitHub */}
+                {/* LinkedIn */}
                 <div className="space-y-2">
-                  <div className="text-dos-cyan font-bold">[GITHUB]</div>
+                  <div className="text-dos-cyan font-bold">[LINKEDIN]</div>
                   <motion.a
-                    href="https://github.com/anexodos"
+                    href={profileData.contact.linkedin}
                     target="_blank"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="inline-flex items-center gap-3 text-base sm:text-lg md:text-xl text-white hover:text-dos-yellow font-mono break-all"
                   >
                     <span className="text-dos-cyan">$</span>
-                    github.com/anexodos
+                    linkedin.com/in/yusuffarhan
+                  </motion.a>
+                </div>
+
+                {/* Phone */}
+                <div className="space-y-2">
+                  <div className="text-dos-cyan font-bold">[PHONE]</div>
+                  <motion.a
+                    href={`tel:${profileData.contact.phone}`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex items-center gap-3 text-base sm:text-lg md:text-xl text-white hover:text-dos-yellow font-mono"
+                  >
+                    <span className="text-dos-cyan">#</span>
+                    {profileData.contact.phone}
                   </motion.a>
                 </div>
 
